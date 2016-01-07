@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import JsonResponse
 from data_mock import token, heroes
 
@@ -12,7 +11,8 @@ def login(request):
             data = {'status': 'success', 'token': token}
             status_code = 200
         else:
-            data = {'status': 'failed', 'msg':'invalid username and password.'}
+            data = {
+                'status': 'failed', 'msg': 'invalid username and password.'}
             status_code = 400
 
         return JsonResponse(data, status=status_code)
@@ -21,7 +21,7 @@ def login(request):
 
 
 def me(request):
-	if request.META.get('AUTHORIZATION') == token:
+    if request.META.get('AUTHORIZATION') == token:
         return JsonResponse({'status': 'logged_in', 'msg': 'hai ela'})
     return JsonResponse({'msg': 'unauthorized'}, status=401)
 
@@ -32,10 +32,12 @@ def get_hero(pk):
     except:
         return None
 
-def heroes(request):
+
+def heroes_list(request):
     if request.META.get('AUTHORIZATION') == token:
         return JsonResponse(heroes)
     return JsonResponse({'msg': 'unauthorized'}, status=401)
+
 
 def hero(request, pk):
     if request.META.get('AUTHORIZATION') == token:
@@ -49,4 +51,3 @@ def hero(request, pk):
 
         return JsonResponse(hero, status=status_code)
     return JsonResponse({'msg': 'unauthorized'}, status=401)
-

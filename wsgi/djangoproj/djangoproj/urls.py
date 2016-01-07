@@ -21,7 +21,6 @@ urlpatterns = [
     url('^login$', 'core.views.login', name='login'),
     url('^me$', 'core.views.me', name='me'),
     # heroes
-    url('^heroes$', 'core.views.heroes', name='heroes'),
+    url('^heroes$', 'core.views.heroes_list', name='heroes'),
     url('^heroes/(?P<pk>.+)$', 'core.views.hero', name='hero')
 ]
-
