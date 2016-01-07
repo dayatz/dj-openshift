@@ -47,4 +47,3 @@ heroes = [
         'movement': 295
     }
 ]
-

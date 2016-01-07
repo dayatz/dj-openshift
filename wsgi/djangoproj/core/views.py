@@ -28,19 +28,21 @@ def me(request):
 
 def get_hero(pk):
     try:
-        return [i for i in heroes if i.get('id') == pk][0]
-    except:
+        return [i for i in heroes if i.get('id') == int(pk)][0]
+    except Exception, e:
+        print e
         return None
 
 
 def heroes_list(request):
     if request.META.get('HTTP_AUTHORIZATION') == token:
         print token, request.META.get('HTTP_AUTHORIZATION')
-        return JsonResponse(heroes)
+        return JsonResponse(heroes, safe=False)
     return JsonResponse({'msg': 'unauthorized'}, status=401)
 
 
 def hero(request, pk):
+    print pk
     if request.META.get('HTTP_AUTHORIZATION') == token:
 
         hero = get_hero(pk)
