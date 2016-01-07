@@ -26,8 +26,10 @@ DATA_DIR = os.environ.get('OPENSHIFT_DATA_DIR', BASE_DIR)
 import sys
 sys.path.append(os.path.join(REPO_DIR, 'libs'))
 import secrets
+SECRETS = secrets.getter(os.path.join(DATA_DIR, 'secrets.json'))
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'h)-3ke5s5%=2we%e9ht8mwva-fwgd4=hdi9tus_3*qp_b9s173'
+
 SECRET_KEY = SECRETS['secret_key']
 
 # SECURITY WARNING: don't run with debug turned on in production!
