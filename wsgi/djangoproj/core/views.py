@@ -35,6 +35,7 @@ def get_hero(pk):
 
 def heroes_list(request):
     if request.META.get('AUTHORIZATION') == token:
+        print token, request.META.get('AUTHORIZATION')
         return JsonResponse(heroes)
     return JsonResponse({'msg': 'unauthorized'}, status=401)
 
