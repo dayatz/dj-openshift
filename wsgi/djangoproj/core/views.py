@@ -1,7 +1,9 @@
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from data_mock import token, heroes
 
 
+@csrf_exempt
 def login(request):
     if request.POST:
         u = request.POST.get('username')

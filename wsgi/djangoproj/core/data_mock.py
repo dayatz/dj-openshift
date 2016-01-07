@@ -4,7 +4,7 @@ heroes = [
     {
         'id': 1,
         'name': 'Chaos Knight',
-        'type': 'int',
+        'type': 'str',
         'attack_type': 'melee',
         'avatar': 'http://www.dotafire.com/images/hero/icon/chaos-knight.png',
         'roles': ['carry', 'disabler'],
