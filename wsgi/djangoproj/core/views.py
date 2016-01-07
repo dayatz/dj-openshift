@@ -21,7 +21,7 @@ def login(request):
 
 
 def me(request):
-    if request.META.get('AUTHORIZATION') == token:
+    if request.META.get('HTTP_AUTHORIZATION') == token:
         return JsonResponse({'status': 'logged_in', 'msg': 'hai ela'})
     return JsonResponse({'msg': 'unauthorized'}, status=401)
 
@@ -34,14 +34,14 @@ def get_hero(pk):
 
 
 def heroes_list(request):
-    if request.META.get('AUTHORIZATION') == token:
-        print token, request.META.get('AUTHORIZATION')
+    if request.META.get('HTTP_AUTHORIZATION') == token:
+        print token, request.META.get('HTTP_AUTHORIZATION')
         return JsonResponse(heroes)
     return JsonResponse({'msg': 'unauthorized'}, status=401)
 
 
 def hero(request, pk):
-    if request.META.get('AUTHORIZATION') == token:
+    if request.META.get('HTTP_AUTHORIZATION') == token:
 
         hero = get_hero(pk)
         if not hero:
