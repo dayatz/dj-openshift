@@ -22,6 +22,6 @@ def login(request):
 
 def me(request):
         token = 'eladayat'
-	if request.META.get('Authorization') == token:
+	if request.META.get('AUTHORIZATION') == token:
             return JsonResponse({'status': 'logged_in', 'msg': 'hai ela'})
         return JsonResponse({'msg': 'invalid provided credential'}, status=401)
